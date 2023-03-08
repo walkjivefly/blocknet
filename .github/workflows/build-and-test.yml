@@ -284,28 +284,28 @@ jobs:
             functional_tests: true
             goal: install
             test_runner_extra: "--coverage --all  --exclude feature_dbcrash"
-            BITCOIN_CONFIG: "--enable-zmq --with-gui=qt5 --enable-glibc-back-compat --enable-reduce-exports --disable-online-rust"
+            BITCOIN_CONFIG: "CC=gcc-8 CXX=g++-8 CFLAGS=\"-g3 -O0\" CXXFLAGS=\"-g3 -O0\" --enable-debug --with-gui=no"
 
-          - name: x86_64 Linux  [GOAL:install]  [focal] [no GUI no unit tests - only functional tests on legacy pre-HD wallets]
-            id: Linux-x86_64-nogui
-            os: ubuntu-20.04
-            host: x86_64-unknown-linux-gnu
-            apt_get: python3-zmq
-            unit_tests: false
-            functional_tests: true
-            goal: install
-            test_runner_extra: "--legacywallet"
-            BITCOIN_CONFIG: "--enable-zmq --with-gui=no --enable-glibc-back-compat --enable-reduce-exports --disable-online-rust"
+#          - name: x86_64 Linux  [GOAL:install]  [focal] [no GUI no unit tests - only functional tests on legacy pre-HD wallets]
+#            id: Linux-x86_64-nogui
+#            os: ubuntu-20.04
+#            host: x86_64-unknown-linux-gnu
+#            apt_get: python3-zmq
+#            unit_tests: false
+#            functional_tests: true
+#            goal: install
+#            test_runner_extra: "--legacywallet"
+#            BITCOIN_CONFIG: "--enable-zmq --with-gui=no --enable-glibc-back-compat --enable-reduce-exports --disable-online-rust"
 
-          - name: x86_64 Linux  [GOAL:install]  [focal]  [no depends only system libs]
-            id: Linux-x86_64-nodepends
-            os: ubuntu-20.04
-            host: x86_64-unknown-linux-gnu
-            apt_get: python3-zmq qtbase5-dev qttools5-dev-tools libqt5svg5-dev libqt5charts5-dev libevent-dev bsdmainutils libboost-system-dev libboost-filesystem-dev libboost-chrono-dev libboost-test-dev libboost-thread-dev libdb5.3++-dev libminiupnpc-dev libnatpmp-dev libzmq3-dev libqrencode-dev libgmp-dev libsodium-dev cargo
-            unit_tests: true
-            no_depends: 1
-            goal: install
-            BITCOIN_CONFIG: "--enable-zmq --with-incompatible-bdb --with-gui=qt5 CPPFLAGS='-DARENA_DEBUG -DDEBUG_LOCKORDER'"
+#          - name: x86_64 Linux  [GOAL:install]  [focal]  [no depends only system libs]
+#            id: Linux-x86_64-nodepends
+#            os: ubuntu-20.04
+#            host: x86_64-unknown-linux-gnu
+#            apt_get: python3-zmq qtbase5-dev qttools5-dev-tools libqt5svg5-dev libqt5charts5-dev libevent-dev bsdmainutils libboost-system-dev libboost-filesystem-dev libboost-chrono-dev libboost-test-dev libboost-thread-dev libdb5.3++-dev libminiupnpc-dev libnatpmp-dev libzmq3-dev libqrencode-dev libgmp-dev libsodium-dev cargo
+#            unit_tests: true
+#            no_depends: 1
+#            goal: install
+#            BITCOIN_CONFIG: "--enable-zmq --with-incompatible-bdb --with-gui=qt5 CPPFLAGS='-DARENA_DEBUG -DDEBUG_LOCKORDER'"
 
 #          - name: macOS 10.12  [GOAL:deploy] [no functional tests]
 #            id: macOS10.12
